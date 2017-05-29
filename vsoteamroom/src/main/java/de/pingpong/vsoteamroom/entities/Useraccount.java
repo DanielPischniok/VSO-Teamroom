@@ -6,14 +6,12 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
 public class Useraccount implements Serializable{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 5443847814544069033L;
 
 	@Id
@@ -32,6 +30,12 @@ public class Useraccount implements Serializable{
 	private String email;
 	
 	private Date verificationDate;
+	
+	@ManyToMany
+	private List<Projectteam> teams;
+	
+	@ManyToMany
+	private List<Teamroom> rooms;
 	
 	@OneToMany
 	private List<Userrole> roles;
@@ -106,6 +110,22 @@ public class Useraccount implements Serializable{
 
 	public void setRoles(List<Userrole> roles) {
 		this.roles = roles;
+	}
+
+	public List<Projectteam> getTeams() {
+		return teams;
+	}
+
+	public void setTeams(List<Projectteam> teams) {
+		this.teams = teams;
+	}
+
+	public List<Teamroom> getRooms() {
+		return rooms;
+	}
+
+	public void setRooms(List<Teamroom> rooms) {
+		this.rooms = rooms;
 	}
 	
 }
