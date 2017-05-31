@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>vso.Teamroom Dokumente verwalten</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/easyTree.css">
+	
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/easyTree.js"></script>
+	<script src="src/easyTree.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+	
+  </head>
+  <body>
+	<div class=".container-fluid">
+		<div class="row">
+			<div class="col-xs-1">
+			</div>
+			<div class="col-xs-10 -main">
+				
+				<header>
+					<div class="row">
+						<div class="col-lg-2">
+							<a href="start.html"><img src="logo.png" id="main-logo" class="img-responsive"></a>	
+						</div>
+						<div class="col-lg-8">
+							<ol class="breadcrumb">
+								<li><a href="start.html">Start</a></li>
+								<li><a href="dokumente-uebersicht.html">Dokumente verwalten</a></li>
+							</ol>
+						</div>
+						<div class="col-lg-2">
+							<div class="dropdown">
+							  <button class="btn dropdown-toggle col-xs-12" type="button" data-toggle="dropdown" id="quick-links">Quick Links
+							  <span class="glyphicon glyphicon-collapse-down"></span></button>
+							  <ul class="dropdown-menu">
+								<li><a href="projekt-erstellen.html">Projekt erstellen</a></li>
+								<li><a href="aufgabe-erstellen.html">Aufgabe erstellen</a></li>
+								<li><a href="dokumente-uebersicht.html">Dokument hochladen</a></li>
+							  </ul>
+							</div> 
+						</div>
+					</div>
+				</header>	
+				
+				<div class="row">
+					<div class="-main">
+						<div class="col-lg-2">
+										
+							<nav class="navbar">
+								 <div class="container-fluid" id="cst-menu">
+									<!-- Titel und Schalter werden fur eine bessere mobile Ansicht zusammengefasst -->
+									<div class="navbar-header">
+									  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarBeispiel-1">
+									  <span class="sr-only">Navigation ein-/ausblenden</span>
+									  <span class="icon-bar"></span>
+									  <span class="icon-bar"></span>
+									  <span class="icon-bar"></span>
+									  </button>
+									 <a class="navbar-brand hidden-md hidden-lg hidden-sm" href="#">VSO Teamroom</a>
+									</div>
+									<div class="collapse navbar-collapse" id="navbarBeispiel-1">
+										<ul class="nav navbar-nav nav-pills -unstyled" id="main-nav">
+											<li><a href="projekte-uebersicht.html" title="Projekte"><span class="glyphicon glyphicon-th-large"></span>Projekte</a></li>
+											<li><a href="aufgaben-uebersicht.html" title="Aufgaben"><span class="glyphicon glyphicon-th"></span>Aufgaben</a></li>
+											<li><a href="dokumente-uebersicht.html" title="Dokumente"><span class="glyphicon glyphicon-file"></span>Dokumente</a></li>
+											<li><a href="calender.html" title="Kalender"><span class="glyphicon glyphicon-calendar"></span>Kalender</a></li>
+											<li><a href="adminbereich.html" title="Adminbereich"><span class="glyphicon glyphicon-lock"></span>Adminbereich</a></li>
+										</ul>
+										<ul class="nav navbar-nav nav-pills -unstyled" id="main-nav">
+											<li><a href="profile.html" title="Nutzerprofil bearbeiten"><span class="glyphicon glyphicon-user"></span>Profil</a></li>
+											<li><a href="teamuebersicht.html" title="Teamubersicht"><span class="glyphicon glyphicon-user"></span>Teamubersicht</a></li>
+											<li><a href="index.html" title="Logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+										</ul>
+									</div>
+								</div>
+								
+							</nav>
+							<div class="separator"></div>
+						</div>
+						<!-- main area start -->						
+						<div class="col-lg-10">
+							<h2>Dokumente verwalten</h2>
+						
+							<!-- upload pannel -->
+							<div class="panel panel-default">
+								<div class="panel-heading" onclick="
+								$('#upload-pane').toggle();
+								$('#toggle-plus').toggle();
+								$('#toggle-minus').toggle();">
+									<span class="glyphicon glyphicon-plus" id="toggle-plus"></span><span class="glyphicon glyphicon-minus" id="toggle-minus" style="display:none;"></span>Dokument hochladen
+								</div>
+								<div class="panel-body" id="upload-pane" style="display:none;">
+									<div class="col-md-12">
+										<div class="input-group">
+											<span class="input-group-btn">
+												<span class="btn btn-detault btn-file">
+													Browse&hellip; <input type="file" single>
+												</span>
+											</span>
+										</div>
+										<hr>
+										<button type="button" class="btn btn-primary" type="submit" value="submit"><span class="glyphicon glyphicon-upload"></span> Hochladen</button>
+										<hr>
+										<div class="col-md-6">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													Ausgewahlte Dateien
+												</div>
+												<div class="panel-body">
+													<ul class="list-group -unstyled">
+														<li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>File.xls</li>
+														<li class="list-group-item"><span class="glyphicon glyphicon-chevron-right"></span>File.xls</li>
+														<li class="list-group-item active"><span class="glyphicon glyphicon-chevron-right"></span>File.txt</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													{filename} Eigenschaften
+												</div>
+												<div class="panel-body">
+													<div class="form-group">
+													  <input type="text" class="form-control" id="tags" value="Tags durch Komma getrennt eingeben">
+													</div>
+													<div class="form-group">
+													  <label for="task-id">zu Aufgabe zuordnen:</label>
+													  <input type="text" class="form-control" id="task-id" value="int" style="width:70px;">
+													</div>
+													<div class="form-group">
+													  <label for="raname-file">Datei umbenennen:</label>
+													  <input type="text" class="form-control" id="rename-file" value="neuen Namen eingeben">
+													</div>
+													<div class="form-group has-feedback">
+														<label for="assignee">in Ordner ablegen:</label>
+														<input type="text" class="form-control" id="assignee">
+														 <i class="glyphicon glyphicon-search form-control-feedback"></i>
+													</div>
+													<button type="submit" class="btn btn-primary">Speichern</button>
+													<button type="submit" class="btn btn-default" style="float:right;">Datei loschen</button>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div><!-- upload panel -->
+							
+							<!-- document overview start -->
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<div class="input-group" style="margin:0 0 20px;">
+									  <input type="text" class="form-control" placeholder="Durchsuche Dokumente...">
+									  <span class="input-group-btn">
+										<button class="btn btn-default" type="button">Los!</button>
+									  </span>
+									</div>
+								
+									<div class="col-md-6">
+										
+										<div class="easy-tree">
+											<ul>
+											<li>Example 1</li>
+											<li>Example 2</li>
+											<li>Example 3
+											<ul>
+											<li>Example 1</li>
+											<li>Example 2
+											<ul>
+											<li>Example 1</li>
+											<li>Example 2</li>
+											<li>Example 3</li>
+											<li>Example 4</li>
+											</ul>
+											</li>
+											<li>Example 3</li>
+											<li>Example 4</li>
+											</ul>
+											</li>
+											<li>Example 0
+											<ul>
+											<li>Example 1</li>
+											<li>Example 2</li>
+											<li>Example 3</li>
+											<li>Example 4
+											<ul>
+											<li>Example 1</li>
+											<li>Example 2</li>
+											<li>Example 3</li>
+											<li>Example 4</li>
+											</ul>
+											</li>
+											</ul>
+											</li>
+											</ul>
+										</div>
+										<script>
+											(function ($) {
+												function init() {
+													$('.easy-tree').EasyTree({
+														addable: true,
+														editable: true,
+														deletable: true
+													});
+												}
+
+												window.onload = init();
+											})(jQuery)
+										</script>
+									</div>
+									<div class="col-md-6">
+										<div class="panel">
+											<ul class="nav nav-tabs">
+											  <li class="active"><a href="#1a" data-toggle="tab">Datei bearbeiten</a></li>
+											  <li><a href="#1b" data-toggle="tab">Versionierung</a></li>
+											</ul>
+										</div>
+										
+										<div class="tab-content ">
+											<!-- tab 1 -->
+											<div class="tab-pane active" id="1a">
+												<div class="panel panel-default">
+													<div class="panel-heading">
+														{filename} Eigenschaften
+													</div>
+													<div class="panel-body">
+														<div class="form-group">
+														  <input type="text" class="form-control" id="tags" value="Tags durch Komma getrennt eingeben">
+														</div>
+														<div class="form-group">
+														  <label for="task-id">zu Aufgabe zuordnen:</label>
+														  <input type="text" class="form-control" id="task-id" value="int" style="width:70px;">
+														</div>
+														<div class="form-group">
+														  <label for="raname-file">Datei umbenennen:</label>
+														  <input type="text" class="form-control" id="rename-file" value="neuen Namen eingeben" onclick="$('.datepicker').datepicker(show)">
+														</div>
+														<div class="form-group has-feedback">
+															<label for="assignee">in Ordner umziehen:</label>
+															<input type="text" class="form-control" id="assignee">
+															 <i class="glyphicon glyphicon-search form-control-feedback"></i>
+														</div>
+														<button type="submit" class="btn btn-primary">Speichern</button>
+														<button type="submit" class="btn btn-default" style="float:right;">Datei loschen</button>
+													</div>
+												</div>
+											</div>
+											
+											<!-- tab 2 -->
+											<div class="tab-pane" id="1b">
+												<table class="table table-striped versioning">
+													<thead>
+														<tr>
+															<th>Name</th><th>Datum</th><th>Aktion</th>
+														</tr>
+													</thead>
+													<tr>
+														<td>Name</td><td>Datum</td><td>Aktion</td>
+													</tr>
+													<tr>
+														<td>Name</td><td>Datum</td><td>Aktion</td>
+													</tr>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- document overview end -->
+						<!-- main area end -->
+						</div>
+					</div><!-- end main content -->
+				</div>
+				
+				<footer>
+					<div class="row">
+						<div class="col-lg-2">
+						</div>
+						<div class="col-lg-8">
+							<a href="contact.html" title="Kontakt">Kontakt</a> | <a href="datenschutz.html"title="Datenschutz">Datenschutz</a> | <a href="impressum.html" title="Impressum">Impressum</a>
+						</div>
+						<div class="col-lg-2">
+						</div>
+					</div>
+				</footer>
+			</div>
+			<div class="col-xs-1">
+			</div>
+		</div>
+		
+		<div class="chat">
+			<button class="btn btn-lg btn-success">Open Chat <span class="glyphicon glyphicon-comment"></span></div>
+		</div>
+	</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+  </body>
+</html>

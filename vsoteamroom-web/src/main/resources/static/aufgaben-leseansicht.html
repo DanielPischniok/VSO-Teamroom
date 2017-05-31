@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>vso.Teamroom Aufgabe: {task_title}</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/custom.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<div class=".container-fluid">
+		<div class="row">
+			<div class="col-xs-1">
+			</div>
+			<div class="col-xs-10 -main">
+				
+				<header>
+					<div class="row">
+						<div class="col-lg-2">
+							<a href="start.html"><img src="logo.png" id="main-logo" class="img-responsive"></a>	
+						</div>
+						<div class="col-lg-8">
+							<ol class="breadcrumb">
+								<li><a href="start.html">Start</a></li>
+								<li><a href="projekte-uebersicht.html">Projekte</a></li>
+								<li><a href="aufgaben-uebersicht.html">Aufgaben</a></li>
+								<li><a href="#">{task_title}</a></li>
+							</ol>
+						</div>
+						<div class="col-lg-2">
+							<div class="dropdown">
+							  <button class="btn dropdown-toggle col-xs-12" type="button" data-toggle="dropdown" id="quick-links">Quick Links
+							  <span class="glyphicon glyphicon-collapse-down"></span></button>
+							  <ul class="dropdown-menu">
+								<li><a href="projekt-erstellen.html">Projekt erstellen</a></li>
+								<li><a href="aufgabe-erstellen.html">Aufgabe erstellen</a></li>
+								<li><a href="dokumente-uebersicht.html">Dokument hochladen</a></li>
+							  </ul>
+							</div> 
+						</div>
+					</div>
+				</header>	
+				
+				<div class="row">
+					<div class="-main">
+						<div class="col-lg-2">
+										
+							<nav class="navbar">
+								 <div class="container-fluid" id="cst-menu">
+									<!-- Titel und Schalter werden fur eine bessere mobile Ansicht zusammengefasst -->
+									<div class="navbar-header">
+									  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbarBeispiel-1">
+									  <span class="sr-only">Navigation ein-/ausblenden</span>
+									  <span class="icon-bar"></span>
+									  <span class="icon-bar"></span>
+									  <span class="icon-bar"></span>
+									  </button>
+									 <a class="navbar-brand hidden-md hidden-lg hidden-sm" href="#">VSO Teamroom</a>
+									</div>
+									<div class="collapse navbar-collapse" id="navbarBeispiel-1">
+										<ul class="nav navbar-nav nav-pills -unstyled" id="main-nav">
+											<li><a href="projekte-uebersicht.html" title="Projekte"><span class="glyphicon glyphicon-th-large"></span>Projekte</a></li>
+											<li><a href="aufgaben-uebersicht.html" title="Aufgaben"><span class="glyphicon glyphicon-th"></span>Aufgaben</a></li>
+											<li><a href="dokumente-uebersicht.html" title="Dokumente"><span class="glyphicon glyphicon-file"></span>Dokumente</a></li>
+											<li><a href="calender.html" title="Kalender"><span class="glyphicon glyphicon-calendar"></span>Kalender</a></li>
+											<li><a href="adminbereich.html" title="Adminbereich"><span class="glyphicon glyphicon-lock"></span>Adminbereich</a></li>
+										</ul>
+										<ul class="nav navbar-nav nav-pills -unstyled" id="main-nav">
+											<li><a href="profile.html" title="Nutzerprofil bearbeiten"><span class="glyphicon glyphicon-user"></span>Profil</a></li>
+											<li><a href="teamuebersicht.html" title="Teamubersicht"><span class="glyphicon glyphicon-user"></span>Teamubersicht</a></li>
+											<li><a href="index.html" title="Logout"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+										</ul>
+									</div>
+								</div>
+								
+							</nav>
+							<div class="separator"></div>
+						</div>
+						<!-- main area start -->									
+						<div class="col-lg-10">
+						
+							<h2>Aufgabe {task_title}</h2>
+							
+							<div class="panel panel-default">
+								<div class="panel-body">
+									
+									<div class="row">
+										<div class="col-md-6">
+											<form class="form-inline">
+											  <label class="" for="project">Projekt</label>
+											  <select class="form-control" id="project" readonly>
+												<option value="3">Three</option>
+											  </select>
+											</form>
+										</div>
+										<div class="col-md-6">
+											<form class="form-inline">
+											  <label class="" for="category">Kategorie</label>
+											  <select class="form-control" id="category" readonly>
+												<option value="2">Two</option>
+											  </select>
+											</form>
+										</div>
+									</div>
+									<hr>
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group has-feedback">
+											  <label for="thema">Thema:</label>
+											  <input type="text" class="form-control" id="thema" readonly>
+											  <i class="glyphicon glyphicon-edit form-control-feedback"></i>
+											</div>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-12">
+											<div class="form-group has-feedback">
+											  <label for="beschreibung">Beschreibung:</label>
+											  <textarea class="form-control" rows="5" id="beschreibung" readonly></textarea>
+											  <i class="glyphicon glyphicon-edit form-control-feedback"></i>
+											</div>
+										</div>
+									</div>
+									
+									<div class="row">
+										<div class="col-md-6">
+											<div class="row">
+												<div class="col-md-12">
+													<div class="row">
+														<div class="col-md-6">
+															<form class="form-inline">
+															  <label class="" for="prio">Prioritat</label>
+															  <select class="form-control" id="prio" readonly>
+																<option value="1">One</option>
+															  </select>
+															</form>
+														</div>
+														<div class="col-md-6">
+															<label class="" for="time">Est. Time:</label>
+															<div class="form-group has-feedback">
+																<input type="int" class="form-control" id="time" readonly>
+																<i class="glyphicon glyphicon-edit form-control-feedback"></i>
+															</div>
+														</div>
+													</div>
+												
+													<div class="row">
+														<div class="col-md-12">
+															<div class="form-group has-feedback">
+																<label for="assignee">Assignee:</label>
+																<input type="text" class="form-control" id="assignee" readonly>
+																<i class="glyphicon glyphicon-edit form-control-feedback"></i>
+															</div>
+															<div class="form-group has-feedback">
+																<label for="watchers">Watchers</label>
+																<input type="text" class="form-control" id="watchers" readonly>
+																<i class="glyphicon glyphicon-edit form-control-feedback"></i>
+															</div>
+														</div>
+													</div>
+													<div class="row">
+														<div class="col-md-6">
+															<!-- needs to be changed -->
+															<div class="form-group has-feedback">
+																<label for="assignee">Von:</label>
+																<input type="text" class="form-control" id="assignee" readonly>
+																 <i class=" glyphicon glyphicon-calendar form-control-feedback"></i>
+															</div>
+														</div>
+														<div class="col-md-6">
+															<!-- needs to be changed -->
+															<div class="form-group has-feedback">
+																<label for="assignee">Bis:</label>
+																<input type="text" class="form-control" id="assignee" readonly>
+																 <i class=" glyphicon glyphicon-calendar form-control-feedback"></i>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="col-md-6">
+											<div class="panel panel-default">
+												<div class="panel-heading">
+													Anhange
+												</div>
+												<div class="panel-body">
+													<div class="input-group">
+														<span class="input-group-btn">
+															<span class="btn btn-detault btn-file">
+																Browse&hellip; <input type="file" single>
+															</span>
+														</span>
+													</div>
+													<hr>
+													<button type="button" class="btn btn-primary" type="submit" value="submit"><span class="glyphicon glyphicon-upload"></span> Hochladen</button>
+													<hr>
+													<div class="panel panel-default">
+														<div class="panel-heading">
+															Dateien
+														</div>
+														<div class="panel-body">
+															
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<hr>
+									<div class="row">
+										<div class="col-md-12">
+											<button type="submit" class="btn btn-primary" value="Submit">Aufgabe editieren </button> 
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- comments and versioning -->
+							<div class="panel">
+								<ul class="nav nav-tabs">
+								  <li class="active"><a href="#1a" data-toggle="tab">Kommentare</a></li>
+								  <li><a href="#1b" data-toggle="tab">Versionierung</a></li>
+								</ul>
+							</div>
+							
+							<div class="tab-content ">
+								<!-- tab 1 -->
+								<div class="tab-pane active" id="1a">
+									<div class="form-group">
+									  <label for="comment">Beschreibung:</label>
+									  <textarea class="form-control" rows="5" id="comment"></textarea>
+									</div>
+									<button type="submit" class="btn btn-primary" value="Submit">Kommentar absenden</button>
+									<hr>
+									<h4>Bisherige Kommentare</h4>
+									<div class="user_comment">
+										<div class="user_comment_name">{user_name}</div>
+										<div class="user_comment_text">{comment}</div>
+										<div class="user_comment_date small">{comment_date}</div>
+									</div>
+									<hr>
+									<div class="user_comment">
+										<div class="user_comment_name">{user_name}</div>
+										<div class="user_comment_text">{comment}</div>
+										<div class="user_comment_date small">{comment_date}</div>
+									</div>
+									<hr>
+								</div>
+								
+								<!-- tab 2 -->
+								<div class="tab-pane" id="1b">
+									<table class="table table-striped versioning">
+										<thead>
+											<tr>
+												<th>Name</th><th>Datum</th><th>Aktion</th>
+											</tr>
+										</thead>
+										<tr>
+											<td>Name</td><td>Datum</td><td>Aktion</td>
+										</tr>
+										<tr>
+											<td>Name</td><td>Datum</td><td>Aktion</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+							
+						</div>
+					</div><!-- main area end -->						
+				</div><!-- end main content -->
+			</div>
+				
+			<footer>
+				<div class="row">
+					<div class="col-lg-2">
+					</div>
+					<div class="col-lg-8">
+						<a href="contact.html" title="Kontakt">Kontakt</a> | <a href="datenschutz.html"title="Datenschutz">Datenschutz</a> | <a href="impressum.html" title="Impressum">Impressum</a>
+					</div>
+					<div class="col-lg-2">
+					</div>
+				</div>
+			</footer>
+		</div>
+		<div class="col-xs-1">
+		</div>
+	</div>
+		
+		<div class="chat">
+			<button class="btn btn-lg btn-success">Open Chat <span class="glyphicon glyphicon-comment"></span></div>
+		</div>
+	</div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

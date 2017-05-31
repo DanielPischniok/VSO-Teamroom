@@ -1,0 +1,135 @@
+/* custom css */
+
+/* template */
+body{
+	background-color:#fff;
+	font-family:'Verdana','Arial','Helvetica',Sans-Serif;
+	/* standard color:#9a9a9a; */
+	color:#666;
+}	
+.-background{
+	background-color:#efefef;
+}
+
+.-main{
+	background-color:#fff;
+}
+footer{
+	border-top:1px solid #efefef;
+	margin:100px 0;
+	text-align:center;
+	padding:20px 0 0;
+}
+header{
+	margin:10px 0 0;
+	
+}
+.separator{
+	margin:0 0 50px 0;
+}
+
+.-single-float{
+	float:right !important;
+}
+#main-logo{
+	margin:0 0 20px;
+	max-height:100px;
+}
+/* forms */
+fieldset p{
+	margin:20px 0;
+	
+}
+fieldset button{
+	margin:20px 0;
+}
+
+/* chat */
+.chat{
+	position: fixed;
+    bottom: 20px;
+	right:20px;
+}
+
+/* icons */
+.glyphicon{
+	margin:0 10px 0 0;
+}
+
+/* navigation */
+#quick-links{
+	margin:0 0 20px;
+}
+.-unstyled{
+	list-style:none;
+	padding:0 !important;
+}
+.-unstyled li{
+}
+nav ul li:first-child{
+	margin-top:0px;
+}
+.-unstyled > li > a{
+	padding: 10px 0 10px 15px;
+}
+.icon-bar{
+	border:1px solid #999;
+}
+button.navbar-toggle{
+	border:1px solid #999;
+}
+.navbar-nav > li{
+	display:block;
+	width: 100%;
+}
+.navbar-nav > li > a{
+	white-space:nowrap;
+	display:block !important;
+}
+#navbarBeispiel-1{
+	padding:0 !important;
+}
+#main-nav{
+	border-bottom:1px solid #ddd;
+	margin-bottom:20px;
+	padding-bottom:20px !important;
+}
+/* headlines */
+h1{
+	margin:0 0 20px;
+}
+h2{
+	margin:0 0 20px;
+	font-size:120%;
+	font-weight:bold;
+}
+h3{
+	margin:0 0 10px;
+	font-size:100%;
+}
+
+/* tables */
+.versioning{
+	
+}
+
+/* user_comments */
+.user_comment_name{
+	font-weight:bold;
+}
+.user_comment_text{
+	font-style:italic;
+	background-color:#efefef;
+	padding:10px;
+	border-radius:5px;
+	border:1px solid #ccc;
+	margin:10px 0;
+}
+.user_comment_date{
+	font-weight:bold;
+}
+
+/* introduction panel */
+#introduction-panel{
+	margin-top:50px;
+}
