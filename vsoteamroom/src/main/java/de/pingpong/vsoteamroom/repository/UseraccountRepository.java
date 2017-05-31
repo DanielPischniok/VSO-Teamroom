@@ -4,6 +4,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import de.pingpong.vsoteamroom.entities.Useraccount;
 
-public interface UserRepository extends JpaRepository<Useraccount, String> {
+public interface UseraccountRepository extends JpaRepository<Useraccount, String> {
+	
+	Useraccount findByUsernameAndPassword(String username, String password);
 
 }
