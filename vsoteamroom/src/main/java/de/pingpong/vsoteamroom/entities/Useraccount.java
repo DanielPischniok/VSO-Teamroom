@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Useraccount implements Serializable{
 	
@@ -17,6 +19,7 @@ public class Useraccount implements Serializable{
 	@Id
 	private String username;
 	
+	@JsonIgnore
 	private String password;
 	
 	private String name;
