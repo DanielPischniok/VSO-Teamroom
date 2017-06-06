@@ -17,10 +17,16 @@ public class UseraccountBean {
 	
 	public Useraccount login(String username, String password){
 		Useraccount user = userAccountRepository.findByUsernameAndPassword(username, commonBean.hashPassword(password));
+		
+		
+		if(user == null){
+			user = userAccountRepository.findByEmailAndPassword(username, commonBean.hashPassword(password));
+		}
+		
+		
 		if(user != null){
 			user.setPassword(VsoTeamroomCommonBean.HIDE_PASSWORD);
 		}
-		
 		return user;
 	}
 }

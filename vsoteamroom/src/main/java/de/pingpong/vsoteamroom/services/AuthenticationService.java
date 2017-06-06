@@ -1,6 +1,7 @@
 package de.pingpong.vsoteamroom.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,6 +17,7 @@ public class AuthenticationService {
 	@Autowired
 	UseraccountBean userAccountBean;
 
+	@CrossOrigin(origins ="http://localhost")
 	@RequestMapping("/login")
 	public Useraccount loginUser(@RequestParam(name = "user", defaultValue = "test") String username,
 			@RequestParam(name = "pass", defaultValue = "test") String password) {
