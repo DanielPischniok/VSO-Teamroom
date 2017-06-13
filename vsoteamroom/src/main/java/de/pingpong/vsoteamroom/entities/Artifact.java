@@ -12,7 +12,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.Type;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Artifact implements Serializable {
@@ -28,7 +28,8 @@ public class Artifact implements Serializable {
 	private int version;
 	
 	@Lob
-	@Type(type = "org.hibernate.type.BlobType")
+	@Column(columnDefinition="BINARY(5000)")
+	@JsonIgnore
 	private byte[] data;
 	
 	private String comment;
@@ -44,6 +45,10 @@ public class Artifact implements Serializable {
 	
 	@ManyToMany
 	private List<Tag> tags;
+	
+	@ManyToOne
+	@JsonIgnore
+	private Folder folder;
 
 	public long getId() {
 		return id;
@@ -72,7 +77,8 @@ public class Artifact implements Serializable {
 	public byte[] getData() {
 		return data;
 	}
-
+	
+	@JsonIgnore
 	public void setData(byte[] data) {
 		this.data = data;
 	}
@@ -116,5 +122,14 @@ public class Artifact implements Serializable {
 	public void setCommentAttachment(Comment commentAttachment) {
 		this.commentAttachment = commentAttachment;
 	}
+
+	public Folder getFolder() {
+		return folder;
+	}
+
+	public void setFolder(Folder folder) {
+		this.folder = folder;
+	}
+	
 	
 }

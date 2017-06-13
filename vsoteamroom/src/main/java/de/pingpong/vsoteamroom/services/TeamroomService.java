@@ -1,5 +1,6 @@
 package de.pingpong.vsoteamroom.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import de.pingpong.vsoteamroom.VsoteamroomApplication;
 import de.pingpong.vsoteamroom.components.TeamroomBean;
 import de.pingpong.vsoteamroom.entities.Teamroom;
+import de.pingpong.vsoteamroom.exception.TeamroomExistsException;
 
 @RestController
 @RequestMapping(VsoteamroomApplication.REST_COMMON_PATH +  "/teamrooms")
@@ -26,9 +28,24 @@ public class TeamroomService {
 	}
 	
 	@CrossOrigin(origins ="http://localhost")
-	@RequestMapping("/create")
+	@RequestMapping(value = "/create")
 	public String createTeamroom(@RequestParam(name = "roomname", defaultValue = "test")String roomname, 
-			@RequestParam(name = "pass", defaultValue = "test") String userdata){
+			@RequestParam(name="userdata") String userdata){
+		String[] userArray = userdata.split(";");
+		List<String> userList = new ArrayList<>();
+		for(String user : userArray){
+			userList.add(user);
+		}
+		
+		try {
+			teamroomBean.saveTeamroom(roomname, userList);
+		} catch (TeamroomExistsException e) {
+			e.printStackTrace();
+			return "ERROR";
+		}
+		
 		return "SUCCESS";
 	}
+	
+	
 }

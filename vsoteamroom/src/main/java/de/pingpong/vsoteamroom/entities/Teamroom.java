@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Teamroom implements Serializable {
 
@@ -24,9 +26,11 @@ public class Teamroom implements Serializable {
 	private String roomname;
 	
 	@ManyToMany
+	@JsonIgnore
 	private List<Useraccount> users;
 	
 	@OneToMany(mappedBy = "room")
+	@JsonIgnore
 	private List<ProjectDefinition> projects;
 
 	public long getId() {
