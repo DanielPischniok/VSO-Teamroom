@@ -15,6 +15,7 @@
 	<script src="js/js.cookie.js" type="text/javascript"></script>
 	<script src="vso/filter.js" type="text/javascript"></script>
 	<script src="vso/controller.js" type="text/javascript"></script>
+	<script src="vso/taskedit.js" type="text/javascript"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -94,7 +95,7 @@
 						<!-- main area start -->									
 						<div class="col-lg-10">
 						
-							<h2>Aufgabe {task_title}</h2>
+							<h2>Aufgabe </h2>
 							
 							<div class="panel panel-default">
 								<div class="panel-body">
@@ -104,7 +105,6 @@
 											<form class="form-inline">
 											  <label class="" for="project">Projekt</label>
 											  <select class="form-control" id="project" readonly>
-												<option value="3">Three</option>
 											  </select>
 											</form>
 										</div>
@@ -112,7 +112,6 @@
 											<form class="form-inline">
 											  <label class="" for="category">Kategorie</label>
 											  <select class="form-control" id="category" readonly>
-												<option value="2">Two</option>
 											  </select>
 											</form>
 										</div>
@@ -147,7 +146,6 @@
 															<form class="form-inline">
 															  <label class="" for="prio">Prioritat</label>
 															  <select class="form-control" id="prio" readonly>
-																<option value="1">One</option>
 															  </select>
 															</form>
 														</div>
@@ -167,11 +165,6 @@
 																<input type="text" class="form-control" id="assignee" readonly>
 																<i class="glyphicon glyphicon-edit form-control-feedback"></i>
 															</div>
-															<div class="form-group has-feedback">
-																<label for="watchers">Watchers</label>
-																<input type="text" class="form-control" id="watchers" readonly>
-																<i class="glyphicon glyphicon-edit form-control-feedback"></i>
-															</div>
 														</div>
 													</div>
 													<div class="row">
@@ -179,7 +172,7 @@
 															<!-- needs to be changed -->
 															<div class="form-group has-feedback">
 																<label for="assignee">Von:</label>
-																<input type="text" class="form-control" id="assignee" readonly>
+																<input type="text" class="form-control" id="vontime" readonly>
 																 <i class=" glyphicon glyphicon-calendar form-control-feedback"></i>
 															</div>
 														</div>
@@ -187,7 +180,7 @@
 															<!-- needs to be changed -->
 															<div class="form-group has-feedback">
 																<label for="assignee">Bis:</label>
-																<input type="text" class="form-control" id="assignee" readonly>
+																<input type="text" class="form-control" id="bistime" readonly>
 																 <i class=" glyphicon glyphicon-calendar form-control-feedback"></i>
 															</div>
 														</div>
@@ -249,18 +242,7 @@
 									<button type="submit" class="btn btn-primary" value="Submit">Kommentar absenden</button>
 									<hr>
 									<h4>Bisherige Kommentare</h4>
-									<div class="user_comment">
-										<div class="user_comment_name">{user_name}</div>
-										<div class="user_comment_text">{comment}</div>
-										<div class="user_comment_date small">{comment_date}</div>
-									</div>
-									<hr>
-									<div class="user_comment">
-										<div class="user_comment_name">{user_name}</div>
-										<div class="user_comment_text">{comment}</div>
-										<div class="user_comment_date small">{comment_date}</div>
-									</div>
-									<hr>
+									
 								</div>
 								
 								<!-- tab 2 -->
@@ -272,11 +254,9 @@
 											</tr>
 										</thead>
 										<tr>
-											<td>Name</td><td>Datum</td><td>Aktion</td>
+											<td>Daniel</td><td>17.06.2017</td><td>CREATE</td>
 										</tr>
-										<tr>
-											<td>Name</td><td>Datum</td><td>Aktion</td>
-										</tr>
+										
 									</table>
 								</div>
 							</div>

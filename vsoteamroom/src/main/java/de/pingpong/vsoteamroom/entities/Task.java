@@ -10,7 +10,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import de.pingpong.vsoteamroom.enums.TaskStatus;
 import de.pingpong.vsoteamroom.enums.TaskType;
@@ -38,17 +43,42 @@ public class Task implements Serializable {
 	
 	private Date endDate;
 	
+	private Date createDate;
+	
+	private Date updateDate;
+	
 	private int priority;
 	
 	private double estimation;
 	
 	private int percentageOfCompletion;
 	
+	@ManyToOne
+	private TeamProject project;
+	
+	@JsonIgnore
 	@OneToMany
 	private List<Comment> comments;
 	
+	@JsonIgnore
 	@OneToMany
 	private List<Artifact> artifacts;
+	
+	@ManyToOne
+	private Useraccount reporter;
+	
+	@ManyToOne
+	private Useraccount assignee;
+	
+	@PrePersist
+	public void preCreate(){
+		createDate = new Date();
+	}
+	
+	@PreUpdate
+	public void preUpdate(){
+		updateDate = new Date();
+	}
 
 	public long getId() {
 		return id;
@@ -145,5 +175,47 @@ public class Task implements Serializable {
 	public void setArtifacts(List<Artifact> artifacts) {
 		this.artifacts = artifacts;
 	}
+
+	public TeamProject getProject() {
+		return project;
+	}
+
+	public void setProject(TeamProject project) {
+		this.project = project;
+	}
+
+	public Useraccount getReporter() {
+		return reporter;
+	}
+
+	public void setReporter(Useraccount reporter) {
+		this.reporter = reporter;
+	}
+
+	public Useraccount getAssignee() {
+		return assignee;
+	}
+
+	public void setAssignee(Useraccount assignee) {
+		this.assignee = assignee;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+
+	public Date getUpdateDate() {
+		return updateDate;
+	}
+
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
+	}
+	
+	
 	
 }

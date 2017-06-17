@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Projectteam implements Serializable {
 
@@ -24,9 +26,11 @@ public class Projectteam implements Serializable {
 	private String teamname;
 	
 	@ManyToMany
+	@JsonIgnore
 	private List<Useraccount> members;
 	
 	@OneToMany
+	@JsonIgnore
 	private List<TeamProject> projects;
 
 	public long getId() {

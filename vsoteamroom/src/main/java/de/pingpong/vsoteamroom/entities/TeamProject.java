@@ -2,12 +2,16 @@ package de.pingpong.vsoteamroom.entities;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class TeamProject implements Serializable {
@@ -25,6 +29,10 @@ public class TeamProject implements Serializable {
 	
 	@ManyToOne
 	private Projectteam team;
+	
+	@OneToMany(mappedBy="project")
+	@JsonIgnore
+	private List<Task> tasks;
 
 	public ProjectDefinition getProjectDefinition() {
 		return projectDefinition;
@@ -49,6 +57,23 @@ public class TeamProject implements Serializable {
 	public void setTeam(Projectteam team) {
 		this.team = team;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public List<Task> getTasks() {
+		return tasks;
+	}
+
+	public void setTasks(List<Task> tasks) {
+		this.tasks = tasks;
+	}
+	
 	
 	
 }
