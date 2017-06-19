@@ -35,7 +35,7 @@ $(document).ready(function() {
     		if(value.artifacts.length > 0){
     			treestring += "<ul>";
 	    			$.each(value.value.artifacts, function(index01, artifact){
-	    				treestring += "<li>" +"<a href='#'>"+ artifact.title + "</a></li>";
+	    				treestring += "<li>" +"<a target='_blank' href='http://localhost:8080/vso/artifact/download?file="+artifact.id+"'>"+ artifact.title + "</a></li>";
 	    			});
     			treestring += "</ul>";
     		}
@@ -47,7 +47,7 @@ $(document).ready(function() {
     				if(child1.artifacts.length > 0){
     	    			treestring += "<ul>";
     		    			$.each(child1.artifacts, function(index01, artifact){
-    		    				treestring += "<li>" +"<a style='color:white' href='#'>"+ artifact.title + "</a></li>";
+    		    				treestring += "<li>" +"<a style='color:white' target='_blank' href='http://localhost:8080/vso/artifact/download?file="+artifact.id+"'>"+ artifact.title + "</a></li>";
     		    			});
     		    				treestring += "</ul>";
     	    		}
@@ -58,7 +58,7 @@ $(document).ready(function() {
     	    				if(child1.artifacts.length > 0){
     	    	    			treestring += "<ul>";
     	    		    			$.each(child1.artifacts, function(index01, artifact){
-    	    		    				treestring += "<li>" +"<a href='#'>"+ artifact.title + "</a></li>";
+    	    		    				treestring += "<li>" +"<a target='_blank' href='http://localhost:8080/vso/artifact/download?file="+artifact.id+"'>"+ artifact.title + "</a></li>";
     	    		    			});
     	    		    				treestring += "</ul>";
     	    	    		}
@@ -148,7 +148,7 @@ function searchDocument(){
     		if(value.artifacts.length > 0){
     			treestring += "<ul>";
 	    			$.each(value.artifacts, function(index01, artifact){
-	    				treestring += "<li>" +"<a href='#'>"+ artifact.title + "</a></li>";
+	    				treestring += "<li>" +"<a target='_blank' href='http://localhost:8080/vso/artifact/download?file="+artifact.id+"'>"+ artifact.title + "</a></li>";
 	    			});
     			treestring += "</ul>";
     		}
@@ -160,7 +160,7 @@ function searchDocument(){
     				if(child1.artifacts.length > 0){
     	    			treestring += "<ul>";
     		    			$.each(child1.artifacts, function(index01, artifact){
-    		    				treestring += "<li>" +"<a style='color:white' href='#'>"+ artifact.title + "</a></li>";
+    		    				treestring += "<li>" +"<a style='color:white' target='_blank' href='http://localhost:8080/vso/artifact/download?file="+artifact.id+"'>"+ artifact.title + "</a></li>";
     		    			});
     		    				treestring += "</ul>";
     	    		}
@@ -171,7 +171,7 @@ function searchDocument(){
     	    				if(child1.artifacts.length > 0){
     	    	    			treestring += "<ul>";
     	    		    			$.each(child1.artifacts, function(index01, artifact){
-    	    		    				treestring += "<li>" +"<a href='#'>"+ artifact.title + "</a></li>";
+    	    		    				treestring += "<li>" +"<a target='_blank' href='http://localhost:8080/vso/artifact/download?file="+artifact.id+"'>"+ artifact.title + "</a></li>";
     	    		    			});
     	    		    				treestring += "</ul>";
     	    	    		}

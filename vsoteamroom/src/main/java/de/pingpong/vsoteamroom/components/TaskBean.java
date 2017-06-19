@@ -21,6 +21,22 @@ public class TaskBean {
 		return taskRepository.findAll(new Sort(Direction.DESC, "id"));
 	}
 	
+	public List<Task> findLatestTasks(){
+		List<Task> all = taskRepository.findAll(new Sort(Direction.DESC, "id"));
+		if(all.size() > 3){
+			return all.subList(0, 3);
+		}
+		return all;
+	}
+	
+	public List<Task> findLatestTasksWithUser(String username){
+		List<Task> all = taskRepository.findLatestTasksForUser(username);
+		if(all.size() > 3){
+			return all.subList(0, 3);
+		}
+		return all;
+	}
+	
 	public Task findTaskById(String id){
 		try{
 			long longId = Long.parseLong(id);

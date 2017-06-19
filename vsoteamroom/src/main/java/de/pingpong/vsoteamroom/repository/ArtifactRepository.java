@@ -12,4 +12,7 @@ public interface ArtifactRepository extends JpaRepository<Artifact, Long> {
 
 	@Query("SELECT a FROM Artifact a WHERE a.title LIKE LOWER(CONCAT('%',:filename, '%'))")
 	List<Artifact> findArtifactByFilename(@Param("filename")String filename);
+	
+	@Query("SELECT a.data FROM Artifact a WHERE a.id = :fileid")
+	byte[] loadPayloadForFileId(@Param("fileid")Long id);
 }

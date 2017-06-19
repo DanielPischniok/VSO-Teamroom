@@ -41,5 +41,17 @@ public class TaskService {
 		return taskBean.loadCommentsForTask(id);
 	}
 	
+	
+	@CrossOrigin(origins ="http://localhost")
+	@RequestMapping("/findLatestTasks")
+	public List<Task> findLatestTasks(){
+		return taskBean.findLatestTasks();
+	}
+	
+	@CrossOrigin(origins ="http://localhost")
+	@RequestMapping("/findLatestUserTasks")
+	public List<Task> findLatestTasks(@RequestParam(name="user")String user){
+		return taskBean.findLatestTasksWithUser(user);
+	}
 
 }

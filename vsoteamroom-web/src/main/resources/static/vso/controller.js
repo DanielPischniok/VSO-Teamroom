@@ -14,7 +14,7 @@ function login() {
     	if(data){
     		currentUser = data;
     		Cookies.set('currentUser', data);
-    		location.href = 'start_empty.html';
+    		location.href = 'start.html';
     		
     		
     	}else{

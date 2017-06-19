@@ -47,5 +47,18 @@ public class ArtifactBean {
 	
 		return result;
 	}
+	
+	public byte[] loadPayloadById(String fileid){
+		try{
+			long id = Long.parseLong(fileid);
+			return artifactRepository.loadPayloadForFileId(id);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		
+		return null;
+		
+		
+	}
 
 }

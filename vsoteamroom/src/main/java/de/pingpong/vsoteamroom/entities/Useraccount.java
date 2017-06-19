@@ -34,6 +34,8 @@ public class Useraccount implements Serializable{
 	
 	private Date verificationDate;
 	
+	private String phonenumber;
+	
 	@ManyToMany
 	private List<Projectteam> teams;
 	
@@ -129,6 +131,14 @@ public class Useraccount implements Serializable{
 
 	public void setRooms(List<Teamroom> rooms) {
 		this.rooms = rooms;
+	}
+
+	public String getPhonenumber() {
+		return phonenumber;
+	}
+
+	public void setPhonenumber(String phonenumber) {
+		this.phonenumber = phonenumber;
 	}
 	
 }
