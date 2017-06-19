@@ -57,7 +57,7 @@ public class Task implements Serializable {
 	private TeamProject project;
 	
 	@JsonIgnore
-	@OneToMany
+	@OneToMany(mappedBy="task")
 	private List<Comment> comments;
 	
 	@JsonIgnore

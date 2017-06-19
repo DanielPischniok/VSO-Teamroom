@@ -1,5 +1,6 @@
 package de.pingpong.vsoteamroom.components;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,7 @@ public class TaskBean {
 		try{
 			long longId = Long.parseLong(taskid);
 			Task task = taskRepository.findOne(longId);
+			Collections.reverse(task.getComments());
 			return task.getComments();
 		}catch(Exception e){
 			e.printStackTrace();

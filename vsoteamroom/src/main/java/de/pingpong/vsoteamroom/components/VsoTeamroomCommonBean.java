@@ -1,9 +1,13 @@
 package de.pingpong.vsoteamroom.components;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.stereotype.Component;
 
@@ -27,5 +31,19 @@ public class VsoTeamroomCommonBean {
 			e.printStackTrace();
 		}
 		return null;
+	}
+	
+	public Map<String, String> convertParamsToMap(String[] params){
+		Map<String, String> paramMap = new HashMap<>();
+		for(String param : params){
+			String[] paramValue = param.split("=");
+			try {
+				paramMap.put(paramValue[0], URLDecoder.decode(paramValue[1], "UTF-8"));
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return paramMap;
 	}
 }

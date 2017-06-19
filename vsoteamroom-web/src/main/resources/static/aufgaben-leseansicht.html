@@ -40,7 +40,7 @@
 								<li><a href="start.html">Start</a></li>
 								<li><a href="projekte-uebersicht.html">Projekte</a></li>
 								<li><a href="aufgaben-uebersicht.html">Aufgaben</a></li>
-								<li><a href="#">{task_title}</a></li>
+								<li><a id="breadcrumpLink" href="#"></a></li>
 							</ol>
 						</div>
 						<div class="col-lg-2">
@@ -239,7 +239,7 @@
 									  <label for="comment">Beschreibung:</label>
 									  <textarea class="form-control" rows="5" id="comment"></textarea>
 									</div>
-									<button type="submit" class="btn btn-primary" value="Submit">Kommentar absenden</button>
+									<button type="button" class="btn btn-primary" onclick="addOwnComment()">Kommentar absenden</button>
 									<hr>
 									<h4>Bisherige Kommentare</h4>
 									

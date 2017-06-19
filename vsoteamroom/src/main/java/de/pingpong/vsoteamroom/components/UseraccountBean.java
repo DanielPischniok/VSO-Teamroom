@@ -30,4 +30,8 @@ public class UseraccountBean {
 		return user;
 	}
 	
+	public Useraccount findByUsername(String username){
+		return userAccountRepository.findByUsername(username);
+	}
+	
 }
