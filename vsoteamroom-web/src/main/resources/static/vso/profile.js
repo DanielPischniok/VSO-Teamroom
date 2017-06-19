@@ -18,8 +18,8 @@ $(document).ready(function() {
     		return;
     	}
     	
-    	$('#name').val(data.name);
-    	$('#vorname').val(data.surname);
+    	$('#name').val(data.surname);
+    	$('#vorname').val(data.name);
     	$('#inputPhone').val(data.phonenumber);
     	$('#inputEmail3').val(data.email);
     	
