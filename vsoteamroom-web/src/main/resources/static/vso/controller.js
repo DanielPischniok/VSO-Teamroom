@@ -20,6 +20,7 @@ function login() {
     	}else{
     		currentUser = null;
     		Cookies.remove('currentUser');
+    		alert('Login nicht erfolgreich')
     	} 
        
     	

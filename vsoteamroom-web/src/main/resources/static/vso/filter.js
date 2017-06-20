@@ -5,5 +5,5 @@ $(document).ready(function() {
     	return;
     }
     var user = $.parseJSON(currentUser);
-    $('#username').html(user.surname);
+    $('#username').html(user.name);
 });

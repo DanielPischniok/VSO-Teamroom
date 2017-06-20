@@ -11,16 +11,28 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
 	<link href="css/custom.css" rel="stylesheet">
 	 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+	 <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 	<script src="js/js.cookie.js" type="text/javascript"></script>
 	<script src="vso/filter.js" type="text/javascript"></script>
 	<script src="vso/controller.js" type="text/javascript"></script>
+	<script src="vso/taskcreate.js" type="text/javascript"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script>
+		  $( function() {
+			  var $j = jQuery.noConflict();
+			  $j("#vondate").datepicker();
+			  $j("#bisdate").datepicker({
+				  altFormat: "dd.MM.yyyy"
+			  });
+		  } );
+  </script>
   </head>
   <body>
 	<div class=".container-fluid">
@@ -103,10 +115,6 @@
 											<form class="form-inline">
 											  <label class="" for="project">Projekt</label>
 											  <select class="form-control" id="project">
-												<option selected>Choose...</option>
-												<option value="1">One</option>
-												<option value="2">Two</option>
-												<option value="3">Three</option>
 											  </select>
 											</form>
 										</div>
@@ -114,10 +122,9 @@
 											<form class="form-inline">
 											  <label class="" for="category">Kategorie</label>
 											  <select class="form-control" id="category">
-												<option selected>Choose...</option>
-												<option value="1">One</option>
-												<option value="2">Two</option>
-												<option value="3">Three</option>
+												<option value="AUFGABE">AUFGABE</option>
+												<option value="MEILENSTEIN">MEILENSTEIN</option>
+												<option value="ITERATION">ITERATION</option>
 											  </select>
 											</form>
 										</div>
@@ -150,10 +157,9 @@
 															<form class="form-inline">
 															  <label class="" for="prio">Prioritat</label>
 															  <select class="form-control" id="prio">
-																<option selected>Choose...</option>
-																<option value="1">One</option>
-																<option value="2">Two</option>
-																<option value="3">Three</option>
+																<option value="1">1</option>
+																<option value="2">2</option>
+																<option value="3">3</option>
 															  </select>
 															</form>
 														</div>
@@ -184,7 +190,7 @@
 															<!-- needs to be changed -->
 															<div class="form-group has-feedback">
 																<label for="assignee">Von:</label>
-																<input type="text" class="form-control" id="assignee">
+																<input type="text" class="form-control" id="vondate">
 																 <i class=" glyphicon glyphicon-calendar form-control-feedback"></i>
 															</div>
 														</div>
@@ -192,7 +198,7 @@
 															<!-- needs to be changed -->
 															<div class="form-group has-feedback">
 																<label for="assignee">Bis:</label>
-																<input type="text" class="form-control" id="assignee">
+																<input type="text" class="form-control" id="bisdate">
 																 <i class=" glyphicon glyphicon-calendar form-control-feedback"></i>
 															</div>
 														</div>
@@ -231,7 +237,7 @@
 									<hr>
 									<div class="row">
 										<div class="col-md-12">
-											<button type="submit" class="btn btn-default" value="Submit">Aufgabe anlegen </button> <label><input type="checkbox" value=""> Push Nachricht an alle Watcher/Assignees versenden</label>
+											<button type="button" class="btn btn-default" onclick="createTask()" value="Submit">Aufgabe anlegen </button> <label><input type="checkbox" value=""> Push Nachricht an alle Watcher/Assignees versenden</label>
 										</div>
 									</div>
 								</div>
@@ -261,8 +267,8 @@
 		</div>
 	</div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="js/bootstrap.min.js"></script>
+    
   </body>
 </html>

@@ -1,8 +1,10 @@
 package de.pingpong.vsoteamroom.services;
 
 import java.net.URLDecoder;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import de.pingpong.vsoteamroom.VsoteamroomApplication;
 import de.pingpong.vsoteamroom.components.TaskBean;
 import de.pingpong.vsoteamroom.components.UseraccountBean;
+import de.pingpong.vsoteamroom.components.VsoTeamroomCommonBean;
 import de.pingpong.vsoteamroom.entities.Comment;
 import de.pingpong.vsoteamroom.entities.Task;
 import de.pingpong.vsoteamroom.entities.Useraccount;
@@ -35,6 +38,9 @@ public class TaskService {
 	
 	@Autowired
 	TaskRepository taskRepository;
+	
+	@Autowired
+	VsoTeamroomCommonBean commonBean;
 	
 	@CrossOrigin(origins ="http://localhost")
 	@RequestMapping("/findAllTasks")
@@ -101,6 +107,26 @@ public class TaskService {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		
+		
+		return "SUCCESS";
+	}
+	
+	
+	@CrossOrigin(origins ="http://localhost")
+	@RequestMapping("/createTask")
+	public String createTask(@RequestBody String params){
+		Map<String, String> paramMap = commonBean.convertParamsToMap(params.split("&"));
+		
+		try {
+			if(!taskBean.createTask(paramMap)){
+				return "ERROR";
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return "ERROR";
+		}
+		
 		
 		
 		return "SUCCESS";

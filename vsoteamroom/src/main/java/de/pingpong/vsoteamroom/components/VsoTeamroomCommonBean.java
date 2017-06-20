@@ -36,7 +36,7 @@ public class VsoTeamroomCommonBean {
 	public Map<String, String> convertParamsToMap(String[] params){
 		Map<String, String> paramMap = new HashMap<>();
 		for(String param : params){
-			String[] paramValue = param.split("=");
+			String[] paramValue = param.split("=", -1);
 			try {
 				paramMap.put(paramValue[0], URLDecoder.decode(paramValue[1], "UTF-8"));
 			} catch (UnsupportedEncodingException e) {
