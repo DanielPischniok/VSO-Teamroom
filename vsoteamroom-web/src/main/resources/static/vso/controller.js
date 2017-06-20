@@ -20,7 +20,8 @@ function login() {
     	}else{
     		currentUser = null;
     		Cookies.remove('currentUser');
-    		alert('Login nicht erfolgreich')
+    		$('#errorText').append('Login nicht erfolgreich, überprüfen Sie ihre Eingaben!');
+    		$('.alert').show();
     	} 
        
     	
@@ -30,6 +31,11 @@ function login() {
              
 }
 
+
+function closeAlert(){
+	$('#errorText').empty();
+	$('.alert').hide();
+}
 
 function logout(){
 	currentUser = null;

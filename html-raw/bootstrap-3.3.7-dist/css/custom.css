@@ -133,3 +133,14 @@ h3{
 #introduction-panel{
 	margin-top:50px;
 }
+
+/* error messages - remove the comment to hide all error messages */
+/*.alert-dismissible{
+	display:none;
+}*/
+
+.global-message{
+	position:sticky;
+	top:0px;
+	z-index:999;
+}

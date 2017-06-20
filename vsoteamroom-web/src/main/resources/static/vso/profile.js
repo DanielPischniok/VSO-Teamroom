@@ -49,8 +49,27 @@ function saveProfile(){
         data: { username:user.username, nachname: name, uservorname: vorname, userphone: phone, useremail: email, userpass1: pass1, userpass2: pass2 }
     }).then(function(data2) {
     	
+    	if(!data2 || data2 == 'ERROR'){
+    		$('#errorText').append('Profil nicht gespeichert, überprüfen Sie Ihre Eingaben!');
+    		$('.alert-danger').show();
+    		return;
+    	}
+    	
+    	if(data2 == 'SUCCESS'){
+    		$('#errorText').empty();
+    		$('.alert-danger').hide();
+    		$('.alert-success').show();
+    	}
+    	
+    	
        
     });
 	
 	
+}
+
+
+function closeAlert(){
+	$('#errorText').empty();
+	$('.alert').hide();
 }
