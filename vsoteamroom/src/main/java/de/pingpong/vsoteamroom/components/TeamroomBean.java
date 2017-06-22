@@ -1,6 +1,7 @@
 package de.pingpong.vsoteamroom.components;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,11 @@ public class TeamroomBean {
 	
 	@Autowired
 	UseraccountRepository userRepository;
+	
+	@Autowired
+	VsoTeamroomCommonBean commonBean;
+	
+	private final static String NEW_LINE ="\r\n";
 	
 	public List<Teamroom> findAllTeamrooms(){
 		List<Teamroom> allRooms = new ArrayList<>();
@@ -43,23 +49,43 @@ public class TeamroomBean {
 		return allRooms;
 	}
 	
-	public void saveTeamroom(String teamroomName, List<String> usernames)throws TeamroomExistsException{
+	public void saveTeamroom(String teamroomName, String userdata, String option)throws TeamroomExistsException{
 		
 		Teamroom dbRoom = teamroomRepository.findByRoomname(teamroomName);
 		
-		if(dbRoom != null){
-			throw new TeamroomExistsException();
+		if(dbRoom == null){
+			dbRoom = new Teamroom();
+			dbRoom.setRoomname(teamroomName);
+		}else{
+			if(!option.equals("edit")){
+				throw new TeamroomExistsException();
+			}
 		}
 		
-		dbRoom = new Teamroom();
-		dbRoom.setRoomname(teamroomName);
-		
 		List<Useraccount> users = new ArrayList<>();
-		for(String user : usernames){
-			Useraccount dbUser = userRepository.findByUsername(user);
-			if(dbUser != null){
+
+		if(userdata != null && !userdata.isEmpty()){
+			String userLines[] = userdata.split(NEW_LINE);
+			for(String line : userLines){
+				String[]uservalues = line.split(";", -1);
+				Useraccount dbUser = userRepository.findByForeNameSurNameAndEmail(uservalues[0], uservalues[1], uservalues[2]);
+				if(dbUser == null){
+					dbUser = new Useraccount();
+					dbUser.setActive(true);
+					dbUser.setEmail(uservalues[2]);
+					dbUser.setExpirationDate(new Date());
+					dbUser.setName(uservalues[0]);
+					dbUser.setSurname(uservalues[1]);
+					dbUser.setPhonenumber(uservalues[3]);
+					dbUser.setUsername(uservalues[0].toLowerCase());
+					dbUser.setPassword(commonBean.hashPassword("hallo"));
+					userRepository.saveAndFlush(dbUser);
+					dbUser = userRepository.findByForeNameSurNameAndEmail(uservalues[0], uservalues[1], uservalues[2]);
+				}
+				
 				users.add(dbUser);
 			}
+			
 		}
 		
 		dbRoom.setUsers(users);
@@ -68,6 +94,36 @@ public class TeamroomBean {
 		
 	}
 	
+	
+	public String loadTeamroomUserExport(String roomid){
+		Teamroom room = teamroomRepository.findOne(Long.parseLong(roomid));
+		if(room == null){
+			return "";
+		}
+		
+		StringBuilder builder = new StringBuilder();
+		
+		builder.append(room.getRoomname());
+		builder.append(NEW_LINE);
+		for(Useraccount user : room.getUsers()){
+			builder.append(user.getName())
+				   .append(";")
+				   .append(user.getSurname())
+				   .append(";")
+				   .append(user.getEmail())
+				   .append(";")
+				   .append(user.getPhonenumber())
+				   .append(NEW_LINE);
+		   
+		}
+		
+		return builder.toString();
+		
+	}
+	
+	public Teamroom findTeamroomById(String roomid){
+		return teamroomRepository.findOne(Long.parseLong(roomid));
+	}
 
 
 }

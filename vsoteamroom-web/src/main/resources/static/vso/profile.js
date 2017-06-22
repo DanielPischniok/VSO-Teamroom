@@ -59,6 +59,7 @@ function saveProfile(){
     		$('#errorText').empty();
     		$('.alert-danger').hide();
     		$('.alert-success').show();
+    		refreshUser(user);
     	}
     	
     	
@@ -68,6 +69,20 @@ function saveProfile(){
 	
 }
 
+function refreshUser(currentUser){
+	$.ajax({
+        url: "http://localhost:8080/vso/users/loadProfile?user="+currentUser.username
+    }).then(function(data) {
+    	if(!data){
+    		return;
+    	}
+    	Cookies.remove('currentUser');
+    	Cookies.set('currentUser', data);
+    	
+    	 	
+       
+    });
+}
 
 function closeAlert(){
 	$('#errorText').empty();

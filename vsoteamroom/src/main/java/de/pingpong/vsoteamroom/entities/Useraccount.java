@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -36,13 +35,13 @@ public class Useraccount implements Serializable{
 	
 	private String phonenumber;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="members")
 	private List<Projectteam> teams;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="users")
 	private List<Teamroom> rooms;
 	
-	@OneToMany
+	@ManyToMany
 	private List<Userrole> roles;
 
 	public String getUsername() {

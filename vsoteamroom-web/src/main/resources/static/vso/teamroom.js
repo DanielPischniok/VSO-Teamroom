@@ -6,11 +6,12 @@
 $(document).ready(function() {
 	
 	$.ajax({
-        url: "http://localhost:8080//vso/teamrooms/findAllTeamrooms"
+        url: "http://localhost:8080/vso/teamrooms/findAllTeamrooms"
     }).then(function(data) {
     	$('.table').append('<tbody>');
 	    	$.each(data, function(index, value){
-	    		$('.table').append('<tr><td>'+value.id+'</td><td>'+value.roomname+'</td><td>export</td>');
+	    		$('.table').append('<tr><td>'+value.id+'</td><td>'+value.roomname+'</td><td><a href="http://localhost:8080/vso/teamrooms/download?room='+
+	    				value.id+'" target="_blank">export</a></td>');
 	    	});
     	$('.table').append('</tbody>');
     	 	
@@ -21,11 +22,12 @@ $(document).ready(function() {
 
 function reload(){
 	$.ajax({
-        url: "http://localhost:8080//vso/teamrooms/findAllTeamrooms"
+        url: "http://localhost:8080/vso/teamrooms/findAllTeamrooms"
     }).then(function(data) {
     	$('.table > tbody').empty();
 	    	$.each(data, function(index, value){
-	    		$('.table').append('<tr><td>'+value.id+'</td><td>'+value.roomname+'</td><td>export</td>');
+	    		$('.table').append('<tr><td>'+value.id+'</td><td>'+value.roomname+'</td><td><a href="http://localhost:8080/vso/teamrooms/download?room='+
+	    				value.id+'" target="_blank">export</a></td>');
 	    	});
     	 	
        
@@ -37,15 +39,15 @@ function saveTeamroom(){
 	var enteredName = $('#name').val();
 	
 	var input = document.getElementById('userInput');
-	if(option == 'edit'){
-		alert('Funktion nicht implementiert');
-		return;
-	}
+//	if(option == 'edit'){
+//		alert('Funktion nicht implementiert');
+//		return;
+//	}
 	
 	if (!input.files) {
 	    }
 	else if (!input.files[0]) {
-		sendTeamroomToBackend(enteredName, '');
+		sendTeamroomToBackend(enteredName, '', option);
 	    }
 	else{
 		var file = $('#userInput').prop('files')[0];
@@ -53,19 +55,25 @@ function saveTeamroom(){
 		fr.readAsText(file);
 		fr.onload = function() {
 			var users = fr.result;
-			sendTeamroomToBackend(enteredName, users);
+			sendTeamroomToBackend(enteredName, users, option);
 		}
 	}
 }
 
-function sendTeamroomToBackend(roomname, users){
+function sendTeamroomToBackend(roomname, users, option){
 	$.ajax({
-        url: "http://localhost:8080/vso/teamrooms/create?roomname="+roomname+"&userdata="+encodeURIComponent(users)
+		method: "POST",
+        url: "http://localhost:8080/vso/teamrooms/create",
+        data: { room: roomname, userdata: users, selected: option }
     }).then(function(data) {
     	if(data == "SUCCESS"){
     		reload();
+    		$('#errorText').empty();
+    		$('.alert-danger').hide();
+    		$('.alert-success').show();
     	}else{
-    		alert('Der Teamroom existiert bereits');
+    		$('#errorText').append('Der Name existiert bereits');
+    		$('.alert-danger').show();
     	} 	
        
     });

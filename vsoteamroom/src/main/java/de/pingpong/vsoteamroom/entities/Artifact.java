@@ -28,7 +28,7 @@ public class Artifact implements Serializable {
 	private int version;
 	
 	@Lob
-	@Column(columnDefinition="BINARY(5000)")
+	@Column(columnDefinition="longblob")
 	@JsonIgnore
 	private byte[] data;
 	
