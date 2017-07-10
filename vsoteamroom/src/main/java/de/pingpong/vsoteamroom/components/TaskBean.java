@@ -12,10 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Component;
 
-import com.mysql.fabric.xmlrpc.base.Data;
-
 import de.pingpong.vsoteamroom.entities.Comment;
-import de.pingpong.vsoteamroom.entities.ProjectDefinition;
 import de.pingpong.vsoteamroom.entities.Task;
 import de.pingpong.vsoteamroom.entities.TeamProject;
 import de.pingpong.vsoteamroom.entities.Useraccount;

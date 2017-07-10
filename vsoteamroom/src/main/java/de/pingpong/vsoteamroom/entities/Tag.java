@@ -13,4 +13,13 @@ public class Tag implements Serializable {
 	@Id
 	private String tagname;
 
+	public String getTagname() {
+		return tagname;
+	}
+
+	public void setTagname(String tagname) {
+		this.tagname = tagname;
+	}
+	
+
 }
