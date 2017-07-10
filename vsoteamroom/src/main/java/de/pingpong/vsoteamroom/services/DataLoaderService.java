@@ -1,5 +1,7 @@
 package de.pingpong.vsoteamroom.services;
 
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.ArrayList;
@@ -11,6 +13,7 @@ import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Service;
 
@@ -137,7 +140,10 @@ public class DataLoaderService {
 		 testDocument.setTitle("TestDocument.docx");
 		 testDocument.setVersion(1);
 		 try {
-			testDocument.setData(Files.readAllBytes(testDocumentResource.getFile().toPath()));
+			byte[] testDocData = new byte[(int)testDocumentResource.contentLength()];
+			DataInputStream dataIs = new DataInputStream(testDocumentResource.getInputStream());
+			dataIs.readFully(testDocData);
+			testDocument.setData(testDocData);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -153,7 +159,10 @@ public class DataLoaderService {
 		privateDocument.setTitle("PrivateTabelle.xlsx");
 		privateDocument.setVersion(1);
 		try {
-			privateDocument.setData(Files.readAllBytes(privateTabelle.getFile().toPath()));
+			byte[] privDocData = new byte[(int)privateTabelle.contentLength()];
+			DataInputStream dataIs = new DataInputStream(privateTabelle.getInputStream());
+			dataIs.readFully(privDocData);
+			privateDocument.setData(privDocData);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
