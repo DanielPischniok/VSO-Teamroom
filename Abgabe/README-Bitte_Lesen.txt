@@ -10,10 +10,10 @@ Herzlich Willkommen bei VSO-Teamroom
 
 	
 Voraussetzungen für die Demo: 
-Java JRE mindestens Java 7, "java" bekannt im CommandLine
+Java JRE mindestens Java 8, "java" bekannt im CommandLine
 Falls man sich nicht sicher ist, ein "cmd" Fenster öffnen und "java -version" eingeben, es sollte eine Ausgabe erfolgen in Form
-java version "1.X.XXX"
-Java(TM) SE Runtime Environment (build 1.X.XXXX)
+java version "1.8.XXX"
+Java(TM) SE Runtime Environment (build 1.8.XXXX)
 Java HotSpot(TM) 64-Bit Server VM (build XXXX, mixed mode)
 
 Das lauffähige Projekt besteht aus 2 "jar" Files und 3 "bat" Skripten, die jeweils Frontend und Backend starten bzw.
